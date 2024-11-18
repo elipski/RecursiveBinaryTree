@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,11 +24,21 @@ namespace Rextester
         public Node[] Children { get; set; } 
     }
 
-
     public class Program
-
     {
         static int total = 0;
+
+        public static void extraLongFactorials(int n)
+        {
+            BigInteger bigInt = new BigInteger(0);
+            for (int i = 0; i <= n; i++)
+            {
+                bigInt = n * (n - i);
+            }
+
+            Console.WriteLine(bigInt);
+        }
+
         public static Node[] sumNodes(Node node)
         {
             total += node.Value;
@@ -35,7 +47,7 @@ namespace Rextester
             if (next != null)
                 foreach(var nn in next) sumNodes(nn);
             return next;
-        }  
+        }
 
         public static void Main(string[] args)
         {
@@ -48,5 +60,6 @@ namespace Rextester
         }
 
     }
+
 }
 
